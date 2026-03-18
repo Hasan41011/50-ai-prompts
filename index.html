@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50 AI Prompts for Students</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07050f;
+    --bg2: #0d0a1a;
+    --bg3: #120e22;
+    --card: #14102400;
+    --card-border: rgba(124,58,237,0.15);
+    --purple: #7c3aed;
+    --purple-lt: #a78bfa;
+    --purple-dim: rgba(124,58,237,0.12);
+    --gold: #f59e0b;
+    --white: #ffffff;
+    --grey: #6b7280;
+    --grey-lt: #9ca3af;
+    --grey-llt: #d1d5db;
+    --mint: #10b981;
+    --sec1: #7c3aed;
+    --sec2: #0ea5e9;
+    --sec3: #10b981;
+    --sec4: #f59e0b;
+    --sec5: #ec4899;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── noise overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── glow orbs ── */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb1 { width: 500px; height: 500px; background: rgba(124,58,237,0.18); top: -150px; left: -150px; }
+  .orb2 { width: 400px; height: 400px; background: rgba(14,165,233,0.1); bottom: 10%; right: -100px; }
+  .orb3 { width: 300px; height: 300px; background: rgba(236,72,153,0.08); top: 50%; left: 30%; }
+
+  /* ── layout ── */
+  .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── hero ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(124,58,237,0.15);
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--purple-lt);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); display: inline-block; animation: pulse 2s ease infinite; }
+
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-title .accent { color: var(--purple-lt); }
+
+  .hero-sub {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 400;
+    color: var(--grey-lt);
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-tagline {
+    font-size: 14px;
+    color: var(--grey);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-tagline span { color: var(--purple-lt); margin: 0 6px; }
+
+  .section-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    border: 1px solid transparent;
+  }
+  .pill:hover { transform: translateY(-2px); opacity: 0.85; }
+  .pill.p1 { background: rgba(124,58,237,0.2); border-color: rgba(124,58,237,0.4); color: #c4b5fd; }
+  .pill.p2 { background: rgba(14,165,233,0.2); border-color: rgba(14,165,233,0.4); color: #7dd3fc; }
+  .pill.p3 { background: rgba(16,185,129,0.2); border-color: rgba(16,185,129,0.4); color: #6ee7b7; }
+  .pill.p4 { background: rgba(245,158,11,0.2); border-color: rgba(245,158,11,0.4); color: #fcd34d; }
+  .pill.p5 { background: rgba(236,72,153,0.2); border-color: rgba(236,72,153,0.4); color: #f9a8d4; }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--grey);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: fadeUp 0.6s 0.6s ease both;
+  }
+  .scroll-arrow { width: 20px; height: 20px; border-right: 1.5px solid var(--grey); border-bottom: 1.5px solid var(--grey); transform: rotate(45deg); animation: bounce 1.5s ease infinite; }
+  @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(4px)} }
+
+  /* ── how to use ── */
+  .how-section {
+    padding: 80px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple-lt);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    margin-bottom: 48px;
+    color: var(--white);
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .step-card {
+    background: var(--bg2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .step-card:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-3px); }
+  .step-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--purple), transparent);
+  }
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: rgba(124,58,237,0.2);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .step-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .step-body { font-size: 14px; color: var(--grey-lt); line-height: 1.7; }
+
+  /* ── search + filter ── */
+  .prompts-section { padding: 80px 0; }
+
+  .search-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .search-input-wrap {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+  }
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--grey);
+    font-size: 16px;
+  }
+  .search-input {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 14px 16px 14px 44px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input:focus { border-color: rgba(124,58,237,0.5); }
+  .search-input::placeholder { color: var(--grey); }
+
+  .filter-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .filter-pill {
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: transparent;
+    color: var(--grey-lt);
+    transition: all 0.2s;
+  }
+  .filter-pill:hover { border-color: rgba(124,58,237,0.4); color: var(--purple-lt); }
+  .filter-pill.active { background: rgba(124,58,237,0.2); border-color: rgba(124,58,237,0.5); color: var(--purple-lt); }
+
+  /* ── prompt cards ── */
+  .prompts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+
+  .prompt-card {
+    background: var(--bg2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 22px;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .prompt-card:hover { border-color: var(--card-border); transform: translateY(-2px); }
+
+  .prompt-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .prompt-meta { display: flex; flex-direction: column; gap: 4px; }
+  .prompt-num { font-size: 11px; font-weight: 500; color: var(--grey); letter-spacing: 0.06em; }
+  .prompt-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--white); }
+
+  .sec-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px;
+  }
+
+  .prompt-text {
+    font-size: 13px;
+    color: var(--grey-lt);
+    line-height: 1.7;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 14px;
+    flex: 1;
+  }
+
+  .prompt-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .sec-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(124,58,237,0.15);
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--purple-lt);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .copy-btn:hover { background: rgba(124,58,237,0.25); border-color: rgba(124,58,237,0.5); }
+  .copy-btn.copied { background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.3); color: #6ee7b7; }
+
+  /* ── no results ── */
+  .no-results {
+    text-align: center;
+    padding: 60px 24px;
+    color: var(--grey);
+    font-size: 15px;
+    display: none;
+    grid-column: 1/-1;
+  }
+  .no-results.show { display: block; }
+
+  /* ── footer ── */
+  .footer {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 48px 0;
+    text-align: center;
+  }
+  .footer-title { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  .footer-sub { font-size: 14px; color: var(--grey); margin-bottom: 24px; }
+  .footer-link {
+    display: inline-block;
+    background: var(--purple);
+    color: white;
+    padding: 12px 32px;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .footer-link:hover { opacity: 0.85; transform: translateY(-2px); }
+  .footer-copy { margin-top: 32px; font-size: 12px; color: var(--grey); }
+
+  /* ── animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.5s ease both; }
+
+  /* ── scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(124,58,237,0.3); border-radius: 3px; }
+
+  @media (max-width: 600px) {
+    .prompts-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-badge"><span></span> Works with free ChatGPT</div>
+  <h1 class="hero-title"><span class="accent">50</span> AI Prompts</h1>
+  <p class="hero-sub">for Students</p>
+  <p class="hero-tagline">Copy<span>·</span>Paste<span>·</span>Replace the brackets<span>·</span>Get amazing results</p>
+  <div class="section-pills">
+    <div class="pill p1" onclick="filterSection('Study Smarter')">📚 Study Smarter</div>
+    <div class="pill p2" onclick="filterSection('Essay Writing')">✍️ Essay Writing</div>
+    <div class="pill p3" onclick="filterSection('Exam Prep')">📝 Exam Prep</div>
+    <div class="pill p4" onclick="filterSection('Productivity')">⚡ Productivity</div>
+    <div class="pill p5" onclick="filterSection('Life Skills')">🌟 Life Skills</div>
+  </div>
+  <div class="scroll-hint">Scroll to explore<div class="scroll-arrow"></div></div>
+</section>
+
+<!-- ── HOW TO USE ── -->
+<section class="how-section">
+  <div class="wrap">
+    <div class="section-label">Getting started</div>
+    <h2 class="section-title">Three steps to amazing results</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-title">Find your prompt</div>
+        <div class="step-body">Browse the 50 prompts below or use the search bar to find exactly what you need. Each prompt is clearly named — jump to whatever is most useful right now.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-title">Fill in the brackets</div>
+        <div class="step-body">Every prompt has [BRACKETS LIKE THIS]. Replace each one with your own specific information. The more detail you add inside the brackets, the better and more personalised your result will be.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-title">Paste into ChatGPT</div>
+        <div class="step-body">Go to chat.openai.com — the free version works perfectly. Paste, hit send, then keep asking follow-up questions to go even deeper. You are in full control.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROMPTS ── -->
+<section class="prompts-section">
+  <div class="wrap">
+    <div class="section-label">All 50 prompts</div>
+    <h2 class="section-title">Find your prompt</h2>
+
+    <div class="search-bar">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input class="search-input" type="text" placeholder="Search prompts..." id="searchInput" oninput="filterPrompts()">
+      </div>
+    </div>
+
+    <div class="filter-pills" id="filterPills">
+      <button class="filter-pill active" onclick="setFilter('All', this)">All (50)</button>
+      <button class="filter-pill" onclick="setFilter('Study Smarter', this)">📚 Study Smarter</button>
+      <button class="filter-pill" onclick="setFilter('Essay Writing', this)">✍️ Essay Writing</button>
+      <button class="filter-pill" onclick="setFilter('Exam Prep', this)">📝 Exam Prep</button>
+      <button class="filter-pill" onclick="setFilter('Productivity', this)">⚡ Productivity</button>
+      <button class="filter-pill" onclick="setFilter('Life Skills', this)">🌟 Life Skills</button>
+    </div>
+
+    <div class="prompts-grid" id="promptsGrid"></div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-title">Get more resources</div>
+    <div class="footer-sub">More prompt packs, Notion templates, and study guides</div>
+    <a href="https://gumroad.com/your-store" class="footer-link">Visit the store →</a>
+    <div class="footer-copy">50 AI Prompts for Students · gumroad.com/your-store</div>
+  </div>
+</footer>
+
+<script>
+const PROMPTS = [
+  { id:1, section:"Study Smarter", name:"Deep Explainer", text:"You are an expert teacher. Explain [TOPIC] to me as if I am a 15-year-old who has never heard of it. Structure your answer: (1) One plain-English definition. (2) A real-life analogy I can picture. (3) Why it matters — what breaks without it. (4) Three key facts to remember. (5) One question I can ask myself to test my understanding." },
+  { id:2, section:"Study Smarter", name:"Chapter Summariser", text:"Compress the text I paste below into: (1) One-sentence summary. (2) The 7 most important points as complete sentences. (3) Key terms and definitions in a table. (4) One common misconception and the correction. Text: [PASTE CHAPTER HERE]" },
+  { id:3, section:"Study Smarter", name:"Mind Map Builder", text:"Create a hand-drawable mind map for [TOPIC]: Central node, 5 main branches, each with 3 sub-branches containing specific details. After the map, tell me which branch is most commonly tested in exams and why I should spend extra time on it." },
+  { id:4, section:"Study Smarter", name:"Memory Anchor", text:"I keep forgetting [CONCEPT]. Help me remember it using: (1) A catchy acronym or mnemonic. (2) A short story that embeds the key facts. (3) A visual scene I can picture. (4) A real daily-life situation where this concept appears. Make everything specific and relatable." },
+  { id:5, section:"Study Smarter", name:"Comparison Table", text:"Compare [CONCEPT A] vs [CONCEPT B] with: (1) A table of at least 8 rows covering definition, characteristics, examples, advantages, disadvantages, and use cases. (2) A 3-sentence paragraph capturing the most important difference. (3) One exam-style question testing this comparison, with a model answer." },
+  { id:6, section:"Study Smarter", name:"Custom Study Planner", text:"Build a personalised study plan. Subjects: [LIST]. Time available: [X days]. Weak subjects: [LIST]. Strong subjects: [LIST]. Daily free hours: [X]. Output a day-by-day timetable in table format with specific topics per session. Include a 10-minute evening review each day." },
+  { id:7, section:"Study Smarter", name:"Concept Connector", text:"I learned [CONCEPT A] and [CONCEPT B] separately but cannot see how they connect. Explain their relationship step by step. Then show me a real exam scenario where knowing both together gives a much stronger answer. List 2 other related concepts I should link together to build a fuller picture." },
+  { id:8, section:"Study Smarter", name:"Answer Upgrader", text:"Question: [PASTE QUESTION]. My answer: [PASTE YOUR ANSWER]. Please: (1) Score my answer out of 10 and explain why. (2) Identify what is missing or weak. (3) Rewrite it as a full-mark model answer. (4) Bold the specific words that lift the score and explain why each one works." },
+  { id:9, section:"Study Smarter", name:"Confusion Fixer", text:"I am confused about: [DESCRIBE EXACTLY WHAT CONFUSES YOU]. I already tried: [HOW YOU TRIED]. Explain it three completely different ways: (1) Using an everyday analogy. (2) Using a logical step-by-step breakdown. (3) As a diagram described in words I can draw. After each explanation, ask me one check question." },
+  { id:10, section:"Study Smarter", name:"Teaching Mode", text:"I am going to explain [TOPIC] to you as if you know nothing. After I finish: (1) Tell me what I got right. (2) Correct anything wrong or incomplete. (3) Fill in important gaps I missed. (4) Give me a score out of 10. Here is my explanation: [TYPE YOUR EXPLANATION]" },
+  { id:11, section:"Essay Writing", name:"Essay Angle Generator", text:"Essay title: [TITLE]. Generate 5 completely different angles I could take. For each: (1) The core argument in one sentence. (2) Three supporting points. (3) One counterargument and how to address it. (4) A surprising hook to open with. Then recommend which angle scores highest and explain why." },
+  { id:12, section:"Essay Writing", name:"Full Essay Outline", text:"Write a detailed outline for: [ESSAY TITLE]. Include: Introduction — hook, background, clear thesis. Body paragraphs 1, 2, 3 — topic sentence, 2 supporting points with examples, linking sentence. Conclusion — restated thesis, summary, powerful closing thought. No vague filler." },
+  { id:13, section:"Essay Writing", name:"Paragraph Upgrader", text:"Improve my paragraph to distinction level: (1) Strengthen the topic sentence. (2) Add precise vocabulary that sounds natural. (3) Vary sentence length. (4) Add one specific fact or real-world example. (5) Improve the closing link to the next paragraph. Show original and improved versions side by side. [PASTE PARAGRAPH]" },
+  { id:14, section:"Essay Writing", name:"Vocabulary Bank", text:"Give me a complete essay vocabulary bank: (1) 15 sentence starters grouped by purpose — introduce, contrast, give example, conclude. (2) 10 powerful adjectives with example sentences. (3) 8 formal opinion phrases that avoid 'I think'. (4) 5 smooth transition phrases between paragraphs. (5) 3 ways to write a memorable final sentence." },
+  { id:15, section:"Essay Writing", name:"Full Essay Editor", text:"Edit my essay fully: (1) Fix all grammar, spelling, punctuation — explain each fix. (2) Fix awkward sentence structure. (3) Flag underdeveloped ideas. (4) Rate Content, Language, and Organisation each out of 10 with specific comments. (5) Rewrite the weakest paragraph as a model. [PASTE YOUR FULL ESSAY]" },
+  { id:16, section:"Essay Writing", name:"Hook Introduction Writer", text:"Write 3 opening paragraphs for: [ESSAY TITLE]. Each uses a different hook: (1) A shocking statistic or fact. (2) A short vivid scene (2-3 sentences). (3) A thought-provoking rhetorical question. Each must end with a clear thesis. After all three, tell me which is strongest and why." },
+  { id:17, section:"Essay Writing", name:"Argument Builder", text:"My argument: [STATE YOUR ARGUMENT]. Topic: [TOPIC]. Build the strongest case with: (1) 3 powerful supporting points, each with real evidence. (2) The 2 strongest counterarguments someone could raise. (3) How to refute each in 2 sentences. (4) A one-paragraph rebuttal I can add to my essay." },
+  { id:18, section:"Essay Writing", name:"Sentence Transformer", text:"Rewrite this sentence 5 ways: [YOUR SENTENCE]. Version 1 — Formal academic. Version 2 — Persuasive and passionate. Version 3 — Descriptive and vivid. Version 4 — Concise, under 12 words. Version 5 — Using a metaphor. Explain which style suits exam essays best and when to use each." },
+  { id:19, section:"Essay Writing", name:"Mistake Checker", text:"List the 8 most common essay mistakes students make. For each: show a bad example sentence and a corrected version. Then give me a 10-question pre-submission checklist I can use every time. Finally, tell me what examiners say they wish students would do more of." },
+  { id:20, section:"Essay Writing", name:"Power Conclusion", text:"Write 3 conclusions for my essay on [TOPIC]. My 3 main points: [LIST POINTS]. Each must restate the thesis freshly, summarise without repeating, and end memorably. Use a different closing technique each time: (1) A call to action. (2) A forward-looking statement. (3) A powerful insight." },
+  { id:21, section:"Exam Prep", name:"Question Generator", text:"Act as an experienced examiner for [SUBJECT]. Generate 10 questions on [TOPIC]: 3 recall questions, 4 application questions, 3 analysis questions. For each: show the question, mark allocation, and a complete full-mark model answer. Format it like a real exam paper." },
+  { id:22, section:"Exam Prep", name:"Interactive Quiz", text:"Quiz me on [TOPIC]. Rules: ask one question at a time, wait for my answer, then tell me correct or incorrect, give the full answer with explanation, rate my answer out of 5, and give one improvement tip. Start easy and increase difficulty. After 10 questions: score, strengths, weaknesses, and what to revise." },
+  { id:23, section:"Exam Prep", name:"Topic Predictor", text:"Based on past exam papers for [SUBJECT], tell me: (1) Top 5 most frequently tested topics with the years they appeared. (2) Topics that have not appeared recently and may be overdue. (3) Most common question types per topic. (4) Subtopics carrying the most marks. (5) Your prediction for the 3 most likely topics this year and why." },
+  { id:24, section:"Exam Prep", name:"Answer Diagnosis", text:"I answered this incorrectly. Question: [PASTE QUESTION]. My answer: [PASTE ANSWER]. Correct answer: [PASTE IF YOU HAVE IT]. Please: (1) Diagnose the exact mistake — concept gap, calculation error, or misread question? (2) Explain the correct reasoning from scratch. (3) Give me 2 similar practice questions to fix this specific weakness right now." },
+  { id:25, section:"Exam Prep", name:"Cheat Sheet Creator", text:"Create a one-page revision cheat sheet for [TOPIC] in [SUBJECT]. Include: all key definitions, formulas or rules, a quick-reference fact table, common exam question types and how to approach each, and 3 things students always get wrong with corrections. Format for printing — dense but scannable, bullets and tables, not paragraphs." },
+  { id:26, section:"Exam Prep", name:"Examiner Mindset", text:"You are an experienced examiner for [SUBJECT]. Tell me honestly: (1) What separates a full-mark answer from a passing one? (2) 5 things you see in top-scoring papers every year. (3) 5 things that cost marks even when students know the content. (4) Keywords that must appear in answers for [TOPIC] to score full marks. (5) Your single most important piece of advice for students sitting this exam." },
+  { id:27, section:"Exam Prep", name:"7-Day Revision Plan", text:"I have 7 days before my [SUBJECT] exam. Weak areas: [LIST TOPICS]. Build a day-by-day plan: each day has a 90-min morning session and a 60-min evening session, each with a specific activity, not just a topic name. Day 6 = full past paper practice. Day 7 = light review only, no new content." },
+  { id:28, section:"Exam Prep", name:"Formula Vault", text:"For [SUBJECT], give me: (1) Every formula to memorise — all variables explained. (2) Every key definition in simple language. (3) Constants, units, and values to know by heart. (4) Top 5 formulas students confuse and how to tell them apart. (5) A 10-question fill-in-the-blank quiz to test my memorisation right now." },
+  { id:29, section:"Exam Prep", name:"Answer Technique", text:"Teach me the exact technique for answering [QUESTION TYPE] in [SUBJECT] for full marks. (1) How to read the question and identify what is really being asked. (2) What the examiner wants — keywords, structure, depth. (3) A step-by-step answer template I can follow under time pressure. (4) A worked example using this template. (5) The most common mistakes and how to avoid each one." },
+  { id:30, section:"Exam Prep", name:"Pre-Exam Reset", text:"I have an exam in [X hours/days] and I am anxious. My worries: [DESCRIBE WORRIES]. Help me with: (1) A realistic plan for the time I have left. (2) The 3 things to focus on right now for the highest mark gain. (3) A calming routine for tonight and tomorrow morning. (4) Tips for staying focused during the exam itself. (5) A short honest reminder of why I am more prepared than I think." },
+  { id:31, section:"Productivity", name:"Procrastination Breaker", text:"I keep avoiding [TASK/SUBJECT]. I have tried: [WHAT YOU TRIED]. My honest reason for avoiding it: [YOUR REASON]. Give me: (1) The real psychological reason I am procrastinating. (2) A starter task so small I literally cannot say no to it. (3) A 2-hour study block for TODAY broken into 25-min work + 5-min break sessions. (4) One environment change to make right now before I start." },
+  { id:32, section:"Productivity", name:"Weekly Timetable", text:"Build my weekly study timetable. Subjects: [LIST]. Exam in: [X weeks]. Weak subjects: [LIST]. Strong: [LIST]. Free time weekdays: [X hrs]. Weekends: [X hrs]. Fixed commitments: [LIST]. Create a colour-coded weekly table with specific topics per block. Put weak subjects during peak energy hours. Include one full rest period." },
+  { id:33, section:"Productivity", name:"Study Methods Guide", text:"Explain these 5 science-backed study techniques so a student can act on them today: Spaced Repetition, Active Recall, Feynman Technique, Interleaving, Elaborative Interrogation. For each: plain-English explanation, exactly how to use it, ideal session length, best subjects, and one common mistake. Recommend the best combination for exam prep." },
+  { id:34, section:"Productivity", name:"Task Prioritiser", text:"Here is everything I need to do: [PASTE YOUR FULL TASK LIST]. Sort every task into 4 boxes: Urgent+Important, Important+Not Urgent, Urgent+Not Important, Neither. Tell me the exact order to tackle tasks today. Flag anything to delete. Estimate time for each. Build a 48-hour schedule." },
+  { id:35, section:"Productivity", name:"Morning Routine Designer", text:"Design a morning routine for a secondary school student to maximise focus and energy. My current morning: [DESCRIBE IT]. Wake up: [TIME]. School starts: [TIME]. Include: what to do the night before, an optimised wake-up sequence, what to eat for sustained energy, a 5-minute mental prep exercise, and how to avoid low energy in first period. Keep it realistic for a teenager." },
+  { id:36, section:"Productivity", name:"Phone Detox Plan", text:"My phone is ruining my study sessions. I get distracted every [X mins] and spend [X hrs/day] on [APPS]. I already tried: [WHAT YOU TRIED]. Give me: (1) Why phone addiction is so hard to break for teenagers. (2) 3 environment changes to make before my next study session. (3) Specific app or phone settings to change right now. (4) A replacement habit when I feel the urge to check my phone. (5) A 7-day detox challenge with one daily action." },
+  { id:37, section:"Productivity", name:"Free Productivity Toolkit", text:"Recommend the best free tools for a student covering: Note-taking, Flashcards and memory, Focus and time management, Planning and to-do lists, Classmate collaboration. For each tool: name, what it does, why it beats alternatives, one specific study use case, difficulty level. Then tell me which combination you would personally use for exam prep." },
+  { id:38, section:"Productivity", name:"Assignment Breakdown", text:"Assignment: [DESCRIBE — subject, topic, requirements, deadline]. Break it down: (1) Every single task from start to finish. (2) Honest time estimate for each task. (3) The blocking tasks I must do first. (4) A daily action plan from today to the deadline. (5) What a strong final submission looks like so I know what to aim for." },
+  { id:39, section:"Productivity", name:"30-Minute Power Session", text:"I have exactly 30 minutes. Subject: [TOPIC]. My level: [BEGINNER/SOME/CONFIDENT]. Design a 30-minute high-intensity session: Mins 0-5: warm-up activity. Mins 5-20: main learning activity. Mins 20-28: active recall or practice. Mins 28-30: write down 3 things I just learned. Include one specific output I must produce by the end so I know it worked." },
+  { id:40, section:"Productivity", name:"Reward System Builder", text:"My study goals: [LIST YOUR GOALS]. Things I genuinely enjoy: [LIST 5 THINGS]. Build a complete motivation system: daily rewards for small goals, weekly rewards for bigger targets, a milestone reward for a full month of consistency, a fair penalty system for missing goals, and a simple daily tracking method that takes less than 2 minutes to use." },
+  { id:41, section:"Life Skills", name:"Professional Email Writer", text:"Situation: [DESCRIBE — e.g. asking teacher for help, requesting reference letter]. Recipient: [NAME AND ROLE]. Purpose: [WHAT YOU NEED TO COMMUNICATE]. Write 2 versions — formal and semi-formal — each with subject line, opening, body, closing. After both, explain the 3 key differences so I can write professional emails myself next time." },
+  { id:42, section:"Life Skills", name:"Interview Coach", text:"I am preparing for [POSITION — e.g. prefect, scholarship, club president]. My achievements: [LIST]. My weaknesses I am worried about: [LIST HONESTLY]. (1) Give me the 10 most likely interview questions. (2) Model answer for each using the STAR method. (3) 3 things to do and 3 to never do in an interview. (4) A 60-second self-introduction I can memorise. (5) The best question to ask at the end." },
+  { id:43, section:"Life Skills", name:"English Speaking Trainer", text:"My spoken English level: [BEGINNER/INTERMEDIATE/FAIRLY FLUENT]. My biggest challenges: [e.g. vocabulary, confidence, grammar]. Create a 30-day speaking plan — one 15-minute solo exercise per day. Week 1: vocabulary in context. Week 2: complete grammatical sentences. Week 3: fluency without long pauses. Week 4: expressing opinions and debating. Include specific topics and sentences to practise each week." },
+  { id:44, section:"Life Skills", name:"University Profile Builder", text:"Form/Year [X], Age [X], interested in [FIELD OF STUDY]. Activities and achievements: [LIST EVERYTHING, even small things]. Grades: [APPROXIMATE]. (1) Rate my profile honestly. (2) Identify the gaps I need to close. (3) A 12-month action plan to strengthen my profile. (4) Extracurricular activities that are genuinely impressive for my field. (5) A first draft of my personal statement based on what I told you." },
+  { id:45, section:"Life Skills", name:"Financial Intelligence", text:"Teach me the personal finance fundamentals every teenager should know: (1) How money works — income, expenses, assets, liabilities in plain terms. (2) Why saving small amounts early is so powerful — show me real numbers with examples. (3) The difference between wants and needs and how people confuse them. (4) How to manage money when earning even small amounts. (5) The one money mistake young people make that hurts them for years. (6) The first 3 financial habits to build right now at my age." },
+  { id:46, section:"Life Skills", name:"Conflict Resolution", text:"Situation: [DESCRIBE HONESTLY WHAT HAPPENED]. My relationship with this person: [FRIEND/CLASSMATE/TEACHER/FAMILY]. What I want to achieve: [APOLOGISE/RESOLVE/SET A BOUNDARY/OTHER]. Write 2 versions: (1) A calm, honest text message. (2) A script for saying it face to face. After both, explain the key principles of mature conflict resolution I can use in future." },
+  { id:47, section:"Life Skills", name:"Future Skills Roadmap", text:"I am [AGE] years old. My interests: [LIST GENUINE INTERESTS]. Subjects I am good at: [LIST]. (1) Identify the top 5 skills to develop based on my profile and future job market trends. (2) For each: why it is valuable, how to learn it for free, and a beginner milestone. (3) A 6-month skill roadmap with monthly checkpoints. (4) The one skill that, if mastered by 18, gives me the biggest long-term advantage." },
+  { id:48, section:"Life Skills", name:"Self-Introduction Script", text:"Situation: [e.g. scholarship interview, school presentation, club meeting]. About me: Name [X], Age/Year [X], interests [X], achievements [X], goals [X]. Write 3 versions: 30 seconds (elevator pitch), 60 seconds (standard), 2 minutes (detailed). Each must sound natural when spoken — not robotic. After the scripts, give me 5 tips for delivering it confidently when nervous." },
+  { id:49, section:"Life Skills", name:"Personalised Reading List", text:"My interests: [LIST]. Things I want to improve: [e.g. confidence, leadership, money mindset]. Books I have already read: [LIST IF ANY]. Recommend 8 books chosen specifically for me. For each: title, author, why it matches MY goals, the single most important takeaway, and one action I can take immediately after reading it. Rank them in reading order." },
+  { id:50, section:"Life Skills", name:"Teen Business Advisor", text:"I am [AGE] and want to start a real business. Skills and interests: [LIST HONESTLY]. Weekly time: [X hours]. Starting budget: [AMOUNT or zero]. Resources available: [e.g. laptop, contacts, equipment]. (1) Suggest 3 business ideas that genuinely match MY profile. (2) For the best idea, give me a 90-day plan broken down month by month. (3) The first thing I should do THIS WEEK to start. (4) The top 3 mistakes young entrepreneurs make and how to avoid them. (5) How to handle people not taking me seriously because of my age." },
+];
+
+const SEC_COLORS = {
+  "Study Smarter": { bg:"rgba(124,58,237,0.12)", border:"rgba(124,58,237,0.25)", dot:"#7c3aed", badge_bg:"rgba(124,58,237,0.15)", badge_color:"#c4b5fd" },
+  "Essay Writing": { bg:"rgba(14,165,233,0.12)", border:"rgba(14,165,233,0.25)", dot:"#0ea5e9", badge_bg:"rgba(14,165,233,0.15)", badge_color:"#7dd3fc" },
+  "Exam Prep":     { bg:"rgba(16,185,129,0.12)", border:"rgba(16,185,129,0.25)", dot:"#10b981", badge_bg:"rgba(16,185,129,0.15)", badge_color:"#6ee7b7" },
+  "Productivity":  { bg:"rgba(245,158,11,0.12)", border:"rgba(245,158,11,0.25)", dot:"#f59e0b", badge_bg:"rgba(245,158,11,0.15)", badge_color:"#fcd34d" },
+  "Life Skills":   { bg:"rgba(236,72,153,0.12)", border:"rgba(236,72,153,0.25)", dot:"#ec4899", badge_bg:"rgba(236,72,153,0.15)", badge_color:"#f9a8d4" },
+};
+
+const SEC_ICONS = { "Study Smarter":"📚", "Essay Writing":"✍️", "Exam Prep":"📝", "Productivity":"⚡", "Life Skills":"🌟" };
+
+let activeFilter = 'All';
+
+function renderCards(list) {
+  const grid = document.getElementById('promptsGrid');
+  grid.innerHTML = '';
+  if (list.length === 0) {
+    grid.innerHTML = '<div class="no-results show">No prompts found. Try a different search.</div>';
+    return;
+  }
+  list.forEach((p, i) => {
+    const c = SEC_COLORS[p.section];
+    const card = document.createElement('div');
+    card.className = 'prompt-card fade-in';
+    card.style.animationDelay = (i * 0.03) + 's';
+    card.style.borderColor = c.border;
+    card.innerHTML = `
+      <div class="prompt-card-top">
+        <div class="prompt-meta">
+          <div class="prompt-num">Prompt ${p.id}</div>
+          <div class="prompt-name">${p.name}</div>
+        </div>
+        <div class="sec-dot" style="background:${c.dot}"></div>
+      </div>
+      <div class="prompt-text">${p.text}</div>
+      <div class="prompt-footer">
+        <div class="sec-badge" style="background:${c.badge_bg};color:${c.badge_color}">${SEC_ICONS[p.section]} ${p.section}</div>
+        <button class="copy-btn" onclick="copyPrompt(this, \`${p.text.replace(/`/g,'\\`')}\`)">
+          <span>📋</span> Copy
+        </button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function filterPrompts() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  let list = PROMPTS;
+  if (activeFilter !== 'All') list = list.filter(p => p.section === activeFilter);
+  if (q) list = list.filter(p => p.name.toLowerCase().includes(q) || p.text.toLowerCase().includes(q) || p.section.toLowerCase().includes(q));
+  renderCards(list);
+}
+
+function setFilter(section, btn) {
+  activeFilter = section;
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  filterPrompts();
+}
+
+function filterSection(section) {
+  activeFilter = section;
+  document.querySelectorAll('.filter-pill').forEach(p => {
+    p.classList.toggle('active', p.textContent.includes(section));
+  });
+  filterPrompts();
+  document.querySelector('.prompts-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+function copyPrompt(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = '<span>✓</span> Copied!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<span>📋</span> Copy';
+    }, 2000);
+  });
+}
+
+renderCards(PROMPTS);
+
+// ── Copy Protection ──────────────────────────────────────────────────────────
+
+// Disable right click
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Disable text selection on everything except prompt text boxes
+document.addEventListener('selectstart', e => {
+  if (!e.target.classList.contains('prompt-text')) e.preventDefault();
+});
+
+// Disable common keyboard shortcuts
+document.addEventListener('keydown', e => {
+  const blocked = (
+    (e.ctrlKey && ['u','s','a','c'].includes(e.key.toLowerCase())) ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(e.key.toLowerCase())) ||
+    e.key === 'F12'
+  );
+  if (blocked) e.preventDefault();
+});
+
+// Detect devtools open and blur the page
+(function() {
+  const threshold = 160;
+  setInterval(() => {
+    if (
+      window.outerWidth - window.innerWidth > threshold ||
+      window.outerHeight - window.innerHeight > threshold
+    ) {
+      document.body.style.filter = 'blur(10px)';
+    } else {
+      document.body.style.filter = 'none';
+    }
+  }, 1000);
+})();
+
+// Disable drag
+document.addEventListener('dragstart', e => e.preventDefault());
+</script>
+</body>
+</html>
